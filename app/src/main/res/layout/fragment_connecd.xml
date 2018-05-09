@@ -1,57 +1,125 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/tv_connecd_mac"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:text=""/>
+        android:orientation="horizontal">
 
-    <Button
-        android:id="@+id/btn_reconnection_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="40px"
-        android:layout_toRightOf="@+id/tv_connecd_mac"
-        android:text="断开重连"/>
+        <TextView
+            android:id="@+id/tv_connecd_mac"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text=""/>
+
+        <Button
+            android:id="@+id/btn_reconnection_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40px"
+            android:layout_toRightOf="@+id/tv_connecd_mac"
+            android:text="断开重连"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_weight="1"
+        android:layout_height="0dp">
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/RecyclerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/tv_connecd_mac"/>
+        />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/RecyclerView_response"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/et_send"
-        android:layout_below="@+id/RecyclerView"/>
-
-    <EditText
-        android:id="@+id/et_send"
+        />
+    </LinearLayout>
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_toLeftOf="@+id/btn_send"
-        android:hint="send"/>
+        android:orientation="horizontal"
+        android:layout_height="wrap_content">
+        <EditText
+            android:id="@+id/et_send"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_toLeftOf="@+id/btn_send"
+            android:hint="send"/>
 
-    <Button
-        android:id="@+id/btn_send"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_toLeftOf="@+id/btn_clean"
-        android:text="发送"/>
+        <Button
+            android:id="@+id/btn_send"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_toLeftOf="@+id/btn_clean"
+            android:text="发送"/>
 
-    <Button
-        android:id="@+id/btn_clean"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:text="清空"/>
-</RelativeLayout>
+        <Button
+            android:id="@+id/btn_clean"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:text="清空"/>
+    </LinearLayout>
+    <!--  <TextView
+          android:id="@+id/tv_connecd_mac"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:padding="10dp"
+          android:text=""/>
+
+      <Button
+          android:id="@+id/btn_reconnection_view"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginLeft="40px"
+          android:layout_toRightOf="@+id/tv_connecd_mac"
+          android:text="断开重连"/>
+
+      <android.support.v7.widget.RecyclerView
+          android:id="@+id/RecyclerView"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_below="@+id/btn_reconnection_view"/>
+
+      <android.support.v7.widget.RecyclerView
+          android:id="@+id/RecyclerView_response"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_above="@+id/et_send"/>
+
+      <EditText
+          android:id="@+id/et_send"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_alignParentBottom="true"
+          android:layout_toLeftOf="@+id/btn_send"
+          android:hint="send"/>
+
+      <Button
+          android:id="@+id/btn_send"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_alignParentBottom="true"
+          android:layout_toLeftOf="@+id/btn_clean"
+          android:text="发送"/>
+
+      <Button
+          android:id="@+id/btn_clean"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_alignParentBottom="true"
+          android:layout_alignParentRight="true"
+          android:text="清空"/>
+  </RelativeLayout>-->
+</LinearLayout>

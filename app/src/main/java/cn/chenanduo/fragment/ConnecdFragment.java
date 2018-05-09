@@ -85,7 +85,7 @@ public class ConnecdFragment extends BaseFragment implements View.OnClickListene
         mResponseAdapter = new PrintResponseAdapter(responseDatas);
         mRecyclerView_response.setAdapter(mResponseAdapter);
 
-        //切换时会销毁 但是蓝牙连接并没有断开  这里还是显示连接状态
+        //切换时会销毁 但是蓝牙连接并没有断开  这里还是需要默认显示连接状态
         mtv_macName.setText(currentBleMac);
     }
 
@@ -216,7 +216,7 @@ public class ConnecdFragment extends BaseFragment implements View.OnClickListene
             ToastUtils.showToast(getContext(), "写的uuid没有设置哦");
             return;
         }
-        //去除其他多余的uuid  只显示目前选择的Uuid
+        //去除其他多余的uuid  只显示目前选择的Uuid在界面上 节省一些空间来显示返回结果
         if (mConnecdAdapter != null) {
             mDatas.clear();
             mDatas.add(serviceUuid);
