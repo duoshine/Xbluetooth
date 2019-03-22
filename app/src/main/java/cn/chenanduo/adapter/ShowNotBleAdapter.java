@@ -1,5 +1,6 @@
 package cn.chenanduo.adapter;
 
+import android.bluetooth.BluetoothDevice;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,7 +10,6 @@ import android.widget.TextView;
 import java.util.List;
 
 import cn.chenanduo.R;
-import cn.chenanduo.simplebt.bean.DeviceBean;
 
 
 /**
@@ -17,9 +17,9 @@ import cn.chenanduo.simplebt.bean.DeviceBean;
  */
 
 public class ShowNotBleAdapter extends RecyclerView.Adapter<ShowNotBleAdapter.MyViewHolder> {
-    private List<DeviceBean> devices;
+    private List<BluetoothDevice> devices;
 
-    public ShowNotBleAdapter(List<DeviceBean> device) {
+    public ShowNotBleAdapter(List<BluetoothDevice> device) {
         this.devices = device;
     }
 
@@ -38,9 +38,9 @@ public class ShowNotBleAdapter extends RecyclerView.Adapter<ShowNotBleAdapter.My
             holder.ble_name.setText("name:" + name);
         }
         holder.ble_mac.setText("address:" + devices.get(position).getAddress());
-        holder.ble_rssi.setText("Rssi:" + devices.get(position).getRssi());
+        holder.ble_rssi.setText("Rssi:--" );
         holder.ble_ScanRecord.setSelected(true);
-        holder.ble_ScanRecord.setText("ScanRecord:" + devices.get(position).getScanRecord());
+        holder.ble_ScanRecord.setText("ScanRecord:--");
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override

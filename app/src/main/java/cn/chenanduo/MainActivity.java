@@ -2,6 +2,7 @@ package cn.chenanduo;
 
 import android.Manifest;
 import android.bluetooth.BluetoothAdapter;
+import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothGatt;
 import android.bluetooth.BluetoothGattCharacteristic;
 import android.bluetooth.BluetoothGattService;
@@ -23,7 +24,6 @@ import cn.chenanduo.fragment.ConnecdFragment;
 import cn.chenanduo.fragment.ShowBleFragment;
 import cn.chenanduo.simplebt.BluetoothBLeClass;
 import cn.chenanduo.simplebt.BluetoothChangeListener;
-import cn.chenanduo.simplebt.bean.DeviceBean;
 import cn.chenanduo.util.Logger;
 import cn.chenanduo.util.SpUtil;
 import cn.chenanduo.util.ThreadUtils;
@@ -86,8 +86,7 @@ public class MainActivity extends BaseActivity implements ViewPager.OnPageChange
         mBLE = BluetoothBLeClass.getInstane(MainActivity.this, null, null, null)
                 .setScanTime(5000)//设置扫描时间为5秒 不设置默认5秒
                 .setAutoConnect(false)//设置断开后自动连接
-                .closeCleanCache(false)//设置每次断开连接都清除缓存
-                .setFiltration(null, null);//设置过滤条件
+                .closeCleanCache(false);//设置每次断开连接都清除缓存
         mBLE.getBleCurrentState(this);
         if (!mBLE.initialize()) {
             //弹窗显示开启蓝牙
@@ -174,8 +173,8 @@ public class MainActivity extends BaseActivity implements ViewPager.OnPageChange
     }
 
     @Override
-    public void onBleScanResult(final List<DeviceBean> list) {
-        mShowNotBleFragment.setDate(list);
+    public void onBleScanResult(BluetoothDevice device) {
+        mShowNotBleFragment.setDate(device);
     }
 
     @Override

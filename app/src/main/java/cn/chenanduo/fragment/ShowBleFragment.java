@@ -1,5 +1,6 @@
 package cn.chenanduo.fragment;
 
+import android.bluetooth.BluetoothDevice;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
@@ -19,7 +20,6 @@ import cn.chenanduo.MainActivity;
 import cn.chenanduo.R;
 import cn.chenanduo.adapter.ShowNotBleAdapter;
 import cn.chenanduo.adapter.ShowNotBleInterface;
-import cn.chenanduo.simplebt.bean.DeviceBean;
 import cn.chenanduo.util.Logger;
 
 
@@ -31,7 +31,7 @@ public class ShowBleFragment extends BaseFragment {
 
     private RecyclerView mRecyclerView;
     private SwipeRefreshLayout swipeRefreshLayout;
-    private List<DeviceBean> devicesNew = new ArrayList<>();
+    private List<BluetoothDevice> devicesNew = new ArrayList<>();
     private Handler mHandler = new Handler();
     private ShowNotBleAdapter mMShowNotBleAdapter;
 
@@ -60,6 +60,8 @@ public class ShowBleFragment extends BaseFragment {
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
+                devicesNew.clear();
+                mMShowNotBleAdapter.notifyDataSetChanged();
                 //刷新就扫描蓝牙
                 ((MainActivity) getActivity()).startScan();
                 //一秒后隐藏刷新
@@ -101,15 +103,13 @@ public class ShowBleFragment extends BaseFragment {
         mHandler.removeCallbacksAndMessages(null);
     }
 
-    public void setDate(final List<DeviceBean> devices) {
+    public void setDate(BluetoothDevice device) {
         if (mMShowNotBleAdapter != null) {//必须判断 避免扫描中fragment切换销毁时为null
-            if (devicesNew.size() == devices.size()) {
+            if (devicesNew.contains(device)) {
                 return;
             }
-            Logger.d("设置扫描到设备显示");
-            devicesNew.clear();
-            devicesNew.addAll(devices);
-            mMShowNotBleAdapter.notifyDataSetChanged();
+            devicesNew.add(device);
+            mMShowNotBleAdapter.notifyItemChanged(devicesNew.size() - 1);
         }
     }
 }
